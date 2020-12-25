@@ -12,6 +12,9 @@ function tfloat(obj)
     local ftype = math.type
     local result = obj
     if ftype(obj) == "float" then
+        if obj == math.modf(obj) then
+            return nil
+        end
         result = fmt("%.6f", obj)
         return result
     end
