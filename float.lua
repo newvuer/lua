@@ -12,10 +12,7 @@ function tfloat(obj)
     local ftype = math.type
     local result = obj
     if ftype(obj) == "float" then
-        local fir, sec = math.modf(obj)
-        sec = math.modf(sec * 1000000)
-        sec = sec/1000000
-        result = fir + sec
+        result = fmt("%.6f", obj)
         return result
     end
     return nil
