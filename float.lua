@@ -13,11 +13,9 @@ function tfloat(obj)
     local result = obj
     if ftype(obj) == "float" then
         local fir, sec = math.modf(obj)
-        if  (sec*1000000 - 1) > 0 then
-            sec = math.modf(sec*1000000)
-            sec = sec/1000000
-            result = fir + sec
-        end
+        sec = math.modf(sec * 1000000)
+        sec = sec/1000000
+        result = fir + sec
         return result
     end
     return nil
