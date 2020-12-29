@@ -25,7 +25,6 @@ function float:ctor(opt)
     self.type = "float"
     self.auto_increment = opt.auto_increment   -- 自增
     self.comment = opt.comment                 -- 注释
-    self.unsigned = opt.unsigned               -- 无符号
     self.default = opt.default                 -- 默认值
     self.primary = opt.primary                 -- 主键
     self.null = opt.null                       -- NULL
@@ -35,9 +34,6 @@ end
 -- 验证字段传值有效
 function float:verify(x)
     x = assert(tfloat( x) , fmt("`%s` field was passed a invalid value(`Float`).", self.name))
-    if self.unsigned then
-        return x >= 0 and x <= 340282346638528859811704183484516925440
-    end
     return x >= -340282346638528859811704183484516925440 and x <= 340282346638528859811704183484516925440
 end
 
